@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "Getting latest from Git Master"
-git clone https://github.com/RuudBurger/CouchPotatoServer.git /opt/couchpotato
-chown -R nobody:nogroup /opt/couchpotato
-echo "Done Continue booting"
