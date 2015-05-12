@@ -9,11 +9,12 @@ ENV TERM screen
 CMD ["/sbin/my_init"]
 
 # Install Depends
-RUN add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe multiverse" && \
-add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse" && \
-apt-get update -q && \
+RUN apt-get update -q && \
 apt-get install -qy python wget unrar git && \
 apt-get clean && \
+curl -o /tmp/rar.tar.gz http://www.rarlab.com/rar/rarlinux-x64-5.2.1b2.tar.gz&& \
+tar xvf /tmp/rar.tar.gz  -C /tmp && \
+cp -v /tmp/rar/*rar /usr/bin/ && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 RUN mkdir /opt/couchpotato
 
