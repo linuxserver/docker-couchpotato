@@ -45,9 +45,6 @@ Part of what makes our containers work so well is by allowing you to specify you
 * Upgrade to the latest version simply `docker restart couchpotato`.
 * To monitor the logs of the container in realtime `docker logs -f couchpotato`.
 
+## Version Log
 
-**Credits**
-
-* lonix <lonixx@gmail.com>
-* IronicBadger <ironicbadger@linuxserver.io>
-* j0nnymoe <j0nnymoe@linuxserver.io>
++ **28.07.15:** Updated to latest baseimage (for testing), and a fix to autoupdate. 
