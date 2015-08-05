@@ -12,7 +12,6 @@ curl -o /tmp/rar.tar.gz http://www.rarlab.com/rar/rarlinux-x64-5.2.1b2.tar.gz&& 
 tar xvf /tmp/rar.tar.gz  -C /tmp && \
 cp -v /tmp/rar/*rar /usr/bin/ && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
-RUN mkdir /app/couchpotato
 
 #Mappings and Ports
 EXPOSE 5050
