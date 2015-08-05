@@ -1,8 +1,7 @@
 #!/bin/bash
-if [ ! -d /opt/couchpotato/.git ]; then 
-	git clone https://github.com/RuudBurger/CouchPotatoServer.git /opt/couchpotato
+if [ ! -d /app/couchpotato/.git ]; then 
+	/sbin/setuser abc git clone https://github.com/RuudBurger/CouchPotatoServer.git /app/couchpotato
 else
-	cd /opt/couchpotato
-	git pull
+	cd /app/couchpotato
+	/sbin/setuser abc git pull
 fi
-chown -R abc:abc /opt/couchpotato
