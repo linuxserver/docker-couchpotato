@@ -1,6 +1,6 @@
 #!/bin/bash
-/sbin/setuser abc mkdir -p /app
-
+mkdir -p /app
+chown abc:abc /app
 
 if [ ! -d /app/couchpotato/.git ]; then 
 	/sbin/setuser abc git clone https://github.com/RuudBurger/CouchPotatoServer.git /app/couchpotato
