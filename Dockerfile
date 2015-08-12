@@ -1,9 +1,6 @@
 FROM linuxserver/baseimage
 MAINTAINER Stian Larsen <lonixx@gmail.com>
 
-# Use baseimage-docker's init system
-CMD ["/sbin/my_init"]
-
 # Install Depends
 RUN apt-get update -q && \
 apt-get install -qy python wget unrar git && \
