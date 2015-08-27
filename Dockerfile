@@ -3,7 +3,7 @@ MAINTAINER Stian Larsen <lonixx@gmail.com>
 
 # Install Depends
 RUN apt-get update -q && \
-apt-get install -qy python wget unrar git && \
+apt-get install -qy python python-lxml wget unrar git && \
 apt-get clean && \
 curl -o /tmp/rar.tar.gz http://www.rarlab.com/rar/rarlinux-x64-5.2.1b2.tar.gz&& \
 tar xvf /tmp/rar.tar.gz  -C /tmp && \
