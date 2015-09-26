@@ -1,6 +1,12 @@
 FROM linuxserver/baseimage
 MAINTAINER Stian Larsen <lonixx@gmail.com>
 
+# set locale envs
+ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
+
+# Set the locale
+RUN locale-gen en_US.UTF-8
+
 # Install Depends
 RUN apt-get update -q && \
 apt-get install -qy python python-lxml python-openssl wget unrar git && \
