@@ -1,11 +1,8 @@
 FROM linuxserver/baseimage
 MAINTAINER Stian Larsen <lonixx@gmail.com>
 
-# set locale envs
-ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
-
-# Set the locale
-RUN locale-gen en_US.UTF-8
+# set python to use utf-8 rather than ascii, hopefully resolve special characters in movie names
+ENV PYTHONIOENCODING="UTF-8"
 
 # Install Depends
 RUN apt-get update -q && \
