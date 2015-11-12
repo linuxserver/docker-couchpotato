@@ -47,5 +47,6 @@ Part of what makes our containers work so well is by allowing you to specify you
 
 ## Version Log
 
++ **12.11.15:** Misc Code Cleanup
 + **02.10.15:** Change to python baseimage. 
 + **28.07.15:** Updated to latest baseimage (for testing), and a fix to autoupdate. 
