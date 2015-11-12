@@ -6,9 +6,7 @@ ENV PYTHONIOENCODING="UTF-8"
 
 #Mappings and Ports
 EXPOSE 5050
-VOLUME /config
-VOLUME /downloads
-VOLUME /movies
+VOLUME /config /downloads /movies
 
 #Adding Custom files
 ADD init/ /etc/my_init.d/
