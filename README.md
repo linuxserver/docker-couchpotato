@@ -25,7 +25,7 @@ docker create \
 **Parameters**
 
 * `-p 5050` - the port(s)
-* `-v /etc/localhost` for timesync - *optional*
+* `-v /etc/localtime` for timesync - *optional*
 * `-v /config` - Couchpotato Application Data
 * `-v /downloads` - Downloads Folder
 * `-v /movies` - Movie Share
