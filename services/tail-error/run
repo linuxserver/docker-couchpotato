@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec /sbin/setuser abc tail -F /config/data/logs/error.log
