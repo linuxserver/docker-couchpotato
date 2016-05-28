@@ -1,5 +1,5 @@
 #!/bin/bash
-[[ ! -d /app/couchpotato/.git ]] && /sbin/setuser abc git clone https://github.com/RuudBurger/CouchPotatoServer.git /app/couchpotato
+[[ ! -d /app/couchpotato/.git ]] && /sbin/setuser abc git clone git@github.com:CouchPotato/CouchPotatoServer.git /app/couchpotato
 
 # opt out for autoupdates
 [ "$ADVANCED_DISABLEUPDATES" ] && exit 0
