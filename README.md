@@ -1,6 +1,10 @@
-![http://linuxserver.io](http://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
+![https://linuxserver.io](https://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
 
-The [LinuxServer.io](https://linuxserver.io) team brings you another quality container release featuring auto-update on startup, easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
+The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring easy user mapping and community support. Find us for support at:
+* [forum.linuxserver.io](https://forum.linuxserver.io)
+* [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`
+* [Podcast](https://www.linuxserver.io/index.php/category/podcast/) covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
+
 
 # linuxserver/couchpotato
 
@@ -13,11 +17,11 @@ The [LinuxServer.io](https://linuxserver.io) team brings you another quality con
 ```
 docker create \
 	--name=couchpotato \
-	-v /etc/localtime:/etc/localtime:ro \
 	-v <path to data>:/config \
 	-v <path to data>:/downloads \
 	-v <path to data>:/movies \
 	-e PGID=<gid> -e PUID=<uid>  \
+	-e TZ=<timezone> \
 	-p 5050:5050 \
 	linuxserver/couchpotato
 ```
@@ -25,29 +29,33 @@ docker create \
 **Parameters**
 
 * `-p 5050` - the port(s)
-* `-v /etc/localtime` for timesync - *optional*
 * `-v /config` - Couchpotato Application Data
 * `-v /downloads` - Downloads Folder
 * `-v /movies` - Movie Share
 * `-e PGID` for for GroupID - see below for explanation
 * `-e PUID` for for UserID - see below for explanation
+* `-e TZ` for timezone information, eg Europe/London
 
 It is based on alpine-linux with S6 overlay, for shell access whilst the container is running do `docker exec -it couchpotato /bin/bash -l`.
 
 ### User / Group Identifiers
 
-**TL;DR** - The `PGID` and `PUID` values set the user / group you'd like your container to 'run as' to the host OS. This can be a user you've created or even root (not recommended).
+Sometimes when using data volumes (`-v` flags) permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.
 
-Part of what makes our containers work so well is by allowing you to specify your own `PUID` and `PGID`. This avoids nasty permissions errors with relation to data volumes (`-v` flags). When an application is installed on the host OS it is normally added to the common group called users, Docker apps due to the nature of the technology can't be added to this group. So we added this feature to let you easily choose when running your containers.
+In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as below:
 
-## Updates
+```
+  $ id <dockeruser>
+    uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
+```
 
-* Upgrade to the latest version simply `docker restart couchpotato`.
+## Info
+
 * To monitor the logs of the container in realtime `docker logs -f couchpotato`.
 
 ## Version Log
 
-+ **29.06.16:** Rebase to alpine for smaller image size
++ **08.08.16:** Rebase to alpine linux
 + **12.11.15:** Misc Code Cleanup
 + **02.10.15:** Change to python baseimage. 
 + **28.07.15:** Updated to latest baseimage (for testing), and a fix to autoupdate. 

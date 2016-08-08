@@ -1,13 +1,13 @@
 FROM lsiobase/alpine.python
 MAINTAINER sparklyballs
 
-# set python to use utf-8 rather than ascii, hopefully resolve special characters in movie names
+# set python to use utf-8 rather than ascii.
 ENV PYTHONIOENCODING="UTF-8"
 
-#Adding Custom files
+# add local files
 COPY root/ /
 
-#Mappings and Ports
-WORKDIR /app/couchpotato
+# ports and volumes
 EXPOSE 5050
+WORKDIR /app/couchpotato
 VOLUME /config /downloads /movies
