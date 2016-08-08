@@ -36,7 +36,7 @@ docker create \
 * `-e PUID` for for UserID - see below for explanation
 * `-e TZ` for timezone information, eg Europe/London
 
-It is based on alpine-linux with S6 overlay, for shell access whilst the container is running do `docker exec -it couchpotato /bin/bash -l`.
+It is based on alpine-linux with S6 overlay, for shell access whilst the container is running do `docker exec -it couchpotato /bin/bash`.
 
 ### User / Group Identifiers
 
