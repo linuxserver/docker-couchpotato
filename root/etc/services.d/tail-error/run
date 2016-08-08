@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+exec \
+	s6-setuidgid abc tail -F /config/data/logs/error.log

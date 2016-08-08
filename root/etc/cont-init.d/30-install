@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+
+# create folders
+mkdir -p \
+	/var/log/couchpotato
+
+# install app
+[[ ! -d "/app/couchpotato/.git" ]] && \
+	git clone https://github.com/CouchPotato/CouchPotatoServer /app/couchpotato
+
+# permissions
+chown -R abc:abc \
+	/app
+
+chmod 777 \
+	/var/log/couchpotato

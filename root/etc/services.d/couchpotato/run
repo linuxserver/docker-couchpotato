@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+
+umask 0002
+
+exec \
+	s6-setuidgid abc python /app/couchpotato/CouchPotato.py \
+	--config_file=/config/config.ini --data_dir=/config/data
