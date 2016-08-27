@@ -62,6 +62,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Version Log
 
++ **27.08.16:** Add badges to README
 + **08.08.16:** Rebase to alpine linux
 + **12.11.15:** Misc Code Cleanup
 + **02.10.15:** Change to python baseimage. 
