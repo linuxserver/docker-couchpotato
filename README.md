@@ -8,6 +8,10 @@ The [LinuxServer.io](https://linuxserver.io) team brings you another container r
 
 # linuxserver/couchpotato
 
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/couchpotato.svg)][hub]
+[![Docker Stars](https://img.shields.io/docker/stars/linuxserver/couchpotato.svg)][hub]
+
 ![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/couchpotato-icon.png)
 
 [CouchPotato](https://couchpota.to) is an automatic NZB and torrent downloader. You can keep a "movies I want" list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.
