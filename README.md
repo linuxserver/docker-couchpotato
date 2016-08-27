@@ -11,6 +11,7 @@ The [LinuxServer.io](https://linuxserver.io) team brings you another container r
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/couchpotato.svg)][hub]
 [![Docker Stars](https://img.shields.io/docker/stars/linuxserver/couchpotato.svg)][hub]
+[hub]: https://hub.docker.com/r/linuxserver/couchpotato/
 
 ![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/couchpotato-icon.png)
 
