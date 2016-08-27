@@ -8,9 +8,16 @@ The [LinuxServer.io](https://linuxserver.io) team brings you another container r
 
 # linuxserver/couchpotato
 
-![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/couchpotato-icon.png)
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/couchpotato.svg)][hub]
+[![Docker Stars](https://img.shields.io/docker/stars/linuxserver/couchpotato.svg)][hub]
+[![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-couchpotato)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-couchpotato/)
+[hub]: https://hub.docker.com/r/linuxserver/couchpotato/
 
 [CouchPotato](https://couchpota.to) is an automatic NZB and torrent downloader. You can keep a "movies I want" list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.
+
+[![couchpotato](https://couchpota.to/media/images/full.png)][couchurl]
+[couchurl]: https://couchpota.to/
 
 ## Usage
 
@@ -55,6 +62,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Version Log
 
++ **27.08.16:** Add badges to README
 + **08.08.16:** Rebase to alpine linux
 + **12.11.15:** Misc Code Cleanup
 + **02.10.15:** Change to python baseimage. 
