@@ -67,6 +67,7 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 
 ## Version Log
 
++ **30.09.16:** Fix umask.
 + **09.09.16:** Add layer badges to README
 + **27.08.16:** Add badges to README
 + **08.08.16:** Rebase to alpine linux
