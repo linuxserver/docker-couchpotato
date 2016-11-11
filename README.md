@@ -73,6 +73,7 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 
 ## Version Log
 
++ **11.11.16:** Stop cp logging to docker log (they are accessible in the webui and the config folder)
 + **30.09.16:** Fix umask.
 + **09.09.16:** Add layer badges to README
 + **27.08.16:** Add badges to README
