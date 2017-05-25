@@ -73,6 +73,7 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 
 ## Version Log
 
++ **25.05.17:** Rebase to alpine 3.6. 
 + **07.02.17:** Rebase to alpine 3.5. 
 + **11.11.16:** Stop cp logging to docker log (they are accessible in the webui and the config folder)
 + **30.09.16:** Fix umask.
