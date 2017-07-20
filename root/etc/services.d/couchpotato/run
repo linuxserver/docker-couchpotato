@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-umask 022
+UMASK_SET=${UMASK_SET:-022}
+umask "$UMASK_SET"
 
 exec \
 	s6-setuidgid abc python /app/couchpotato/CouchPotato.py \

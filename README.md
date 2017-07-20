@@ -29,6 +29,7 @@ docker create \
 	-v <path to data>:/movies \
 	-e PGID=<gid> -e PUID=<uid>  \
 	-e TZ=<timezone> \
+	-e UMASK_SET=<022> \
 	-p 5050:5050 \
 	linuxserver/couchpotato
 ```
@@ -47,6 +48,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /movies` - Movie Share
 * `-e PGID` for for GroupID - see below for explanation
 * `-e PUID` for for UserID - see below for explanation
+* `-e UMASK_SET` for umask setting of couchpotato, *optional* , default if left unset is 022.
 * `-e TZ` for timezone information, eg Europe/London
 
 It is based on alpine-linux with S6 overlay, for shell access whilst the container is running do `docker exec -it couchpotato /bin/bash`.
@@ -79,6 +81,7 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 
 ## Versions
 
++ **20.07.17:** Internal git pull instead of at runtime, add UMASK_SET variable.
 + **12.07.17:** Add inspect commands to README, move to jenkins build and push.
 + **25.05.17:** Rebase to alpine 3.6. 
 + **07.02.17:** Rebase to alpine 3.5. 
@@ -89,4 +92,4 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 + **08.08.16:** Rebase to alpine linux
 + **12.11.15:** Misc Code Cleanup
 + **02.10.15:** Change to python baseimage. 
-+ **28.07.15:** Updated to latest baseimage (for testing), and a fix to autoupdate. 
++ **28.07.15:** Updated to latest baseimage (for testing), and a fix to autoupdate.
