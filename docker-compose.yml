@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  deluge:
+    image: linuxserver/couchpotato:1
+    build: .
+    container_name: couchpoatato
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./config:/config
+      - ./movies:/movies
+    restart: always
+    environment:
+      - TZ=Europe/London
+      - PUID=911
+      - GUID=911
