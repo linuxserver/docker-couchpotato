@@ -20,3 +20,4 @@ COPY root/ /
 EXPOSE 5050
 WORKDIR /app/couchpotato
 VOLUME /config /downloads /movies
+HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost:5050/ || exit 1
