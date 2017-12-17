@@ -81,6 +81,7 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 
 ## Versions
 
++ **06.12.17:** Rebase to alpine 3.7. 
 + **20.07.17:** Internal git pull instead of at runtime, add UMASK_SET variable.
 + **12.07.17:** Add inspect commands to README, move to jenkins build and push.
 + **25.05.17:** Rebase to alpine 3.6. 
