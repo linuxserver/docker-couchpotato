@@ -9,8 +9,8 @@ LABEL maintainer="sparklyballs"
 # set python to use utf-8 rather than ascii.
 ENV PYTHONIOENCODING="UTF-8"
 
-# install app
 RUN \
+ echo "**** install app ****" && \
  git clone --depth 1 https://github.com/CouchPotato/CouchPotatoServer /app/couchpotato
 
 # add local files
