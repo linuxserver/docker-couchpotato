@@ -46,8 +46,8 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /config` - Couchpotato Application Data
 * `-v /downloads` - Downloads Folder
 * `-v /movies` - Movie Share
-* `-e PGID` for for GroupID - see below for explanation
-* `-e PUID` for for UserID - see below for explanation
+* `-e PGID` for GroupID - see below for explanation
+* `-e PUID` for UserID - see below for explanation
 * `-e UMASK_SET` for umask setting of couchpotato, *optional* , default if left unset is 022.
 * `-e TZ` for timezone information, eg Europe/London
 
