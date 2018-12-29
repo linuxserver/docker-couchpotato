@@ -11,7 +11,7 @@ ENV PYTHONIOENCODING="UTF-8"
 
 RUN \
  echo "**** install app ****" && \
- git clone --depth 1 https://github.com/CouchPotato/CouchPotatoServer /app/couchpotato
+ git clone -b desktop --depth 1 https://github.com/CouchPotato/CouchPotatoServer /app/couchpotato
 
 # add local files
 COPY root/ /
