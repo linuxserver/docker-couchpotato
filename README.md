@@ -36,7 +36,7 @@ docker create \
 
 ## Parameters
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
+`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side.
 For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
 So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
 http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
@@ -71,7 +71,7 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 
 * To monitor the logs of the container in realtime `docker logs -f couchpotato`.
 
-* container version number 
+* container version number
 
 `docker inspect -f '{{ index .Config.Labels "build_version" }}' couchpotato`
 
@@ -81,17 +81,17 @@ Access the webui at `<your-ip>:5050`, for more information check out [CouchPotat
 
 ## Versions
 
-+ **16.08.18:** Rebase to alpine 3.8. 
-+ **06.12.17:** Rebase to alpine 3.7. 
++ **16.08.18:** Rebase to alpine 3.8.
++ **06.12.17:** Rebase to alpine 3.7.
 + **20.07.17:** Internal git pull instead of at runtime, add UMASK_SET variable.
 + **12.07.17:** Add inspect commands to README, move to jenkins build and push.
-+ **25.05.17:** Rebase to alpine 3.6. 
-+ **07.02.17:** Rebase to alpine 3.5. 
++ **25.05.17:** Rebase to alpine 3.6.
++ **07.02.17:** Rebase to alpine 3.5.
 + **11.11.16:** Stop cp logging to docker log (they are accessible in the webui and the config folder)
 + **30.09.16:** Fix umask.
 + **09.09.16:** Add layer badges to README
 + **27.08.16:** Add badges to README
 + **08.08.16:** Rebase to alpine linux
 + **12.11.15:** Misc Code Cleanup
-+ **02.10.15:** Change to python baseimage. 
++ **02.10.15:** Change to python baseimage.
 + **28.07.15:** Updated to latest baseimage (for testing), and a fix to autoupdate.
