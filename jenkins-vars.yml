@@ -2,7 +2,7 @@
 
 # jenkins variables
 project_name: docker-couchpotato
-external_type: github_stable
+external_type: github_commit
 release_type: stable
 release_tag: latest
 ls_branch: master

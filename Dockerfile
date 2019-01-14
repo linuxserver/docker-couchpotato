@@ -15,8 +15,8 @@ RUN \
  mkdir -p \
 	/app/couchpotato && \
  if [ -z ${COUCHPOTATO_RELEASE+x} ]; then \
- 	COUCHPOTATO_RELEASE=$(curl -sX GET "https://api.github.com/repos/CouchPotato/CouchPotatoServer/releases/latest" \
-        | awk '/tag_name/{print $4;exit}' FS='[""]'); \
+ 	COUCHPOTATO_RELEASE=$(curl -sX GET "https://api.github.com/repos/CouchPotato/CouchPotatoServer/commits/master" \
+        | awk '/sha/{print $4;exit}' FS='[""]'); \
  fi && \
  curl -o \
 	/tmp/couchpotato.tar.gz -L \
