@@ -1,0 +1,57 @@
+---
+
+# project information
+project_name: couchpotato
+project_url: "https://couchpota.to/"
+project_logo: "https://couchpota.to/media/images/full.png"
+project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is an automatic NZB and torrent downloader. You can keep a `movies I want` list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory."
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v6-latest"}
+
+# container parameters
+common_param_env_vars_enabled: true
+param_container_name: "{{ project_name }}"
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "</path/to/appdata/config>", desc: "Couchpotato Application Data." }
+  - { vol_path: "/downloads", vol_host_path: "</path/to/downloads>", desc: "Downloads Folder." }
+  - { vol_path: "/movies", vol_host_path: "</path/to/movies>", desc: "Movie Share." }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "5050", internal_port: "5050", port_desc: "http gui" }
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
+  - { env_var: "UMASK_SET", env_value: "022", desc: "for umask setting of couchpotato, optional , default if left unset is 022"}
+
+# optional parameters
+optional_block_1: false
+optional_block_1_items: ""
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  Access the webui at `<your-ip>:5050`, for more information check out [CouchPotato](https://couchpota.to).
+
+# changelog
+changelogs:
+  - { date: "14.01.19:", desc: "Multi-arch builds." }
+  - { date: "16.08.18:", desc: "Rebase to alpine 3.8." }
+  - { date: "06.11.17:", desc: "Rebase to alpine 3.7." }
+  - { date: "20.07.17:", desc: "Internal git pull instead of at runtime, add UMASK_SET variable." }
+  - { date: "12.07.17:", desc: "Add inspect commands to README, move to jenkins build and push" }
+  - { date: "25.05.17:", desc: "Rebase to alpine 3.6" }
+  - { date: "07.02.17:", desc: "Rebase to alpine 3.5." }
+  - { date: "11.11.16:", desc: "Stop cp logging to docker log (they are accessible in the webui and the config folder)." }
+  - { date: "30.09.16:", desc: "Fix umask." }
+  - { date: "09.09.16:", desc: "Add layer badges to README." }
+  - { date: "27.08.16:", desc: "Add badges to README." }
+  - { date: "08.08.16:", desc: "Rebase to alpine linux." }
+  - { date: "12.11.15:", desc: "Misc Code Cleanup." }
+  - { date: "02.10.15:", desc: "Change to python baseimage." }
+  - { date: "28.07.15:", desc: "Updated to latest baseimage (for testing), and a fix to autoupdate." }

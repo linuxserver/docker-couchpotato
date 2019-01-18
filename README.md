@@ -1,97 +1,154 @@
-[linuxserverurl]: https://linuxserver.io
-[forumurl]: https://forum.linuxserver.io
-[ircurl]: https://www.linuxserver.io/irc/
-[podcasturl]: https://www.linuxserver.io/podcast/
-[appurl]: https://couchpota.to/
-[hub]: https://hub.docker.com/r/linuxserver/couchpotato/
+[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)](https://linuxserver.io)
 
-[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
+The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring :-
 
-The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
-* [forum.linuxserver.io][forumurl]
-* [IRC][ircurl] on freenode at `#linuxserver.io`
-* [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
+ * regular and timely application updates
+ * easy user mappings (PGID, PUID)
+ * custom base image with s6 overlay
+ * weekly base OS updates with common layers across the entire LinuxServer.io ecosystem to minimise space usage, down time and bandwidth
+ * regular security updates
 
-# linuxserver/couchpotato
-[![](https://images.microbadger.com/badges/version/linuxserver/couchpotato.svg)](https://microbadger.com/images/linuxserver/couchpotato "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/couchpotato.svg)](https://microbadger.com/images/linuxserver/couchpotato "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/couchpotato.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/couchpotato.svg)][hub][![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Builders/x86-64/x86-64-couchpotato)](https://ci.linuxserver.io/job/Docker-Builders/job/x86-64/job/x86-64-couchpotato/)
+Find us at:
+* [Discord](https://discord.gg/YWrKVTn) - realtime support / chat with the community and the team.
+* [IRC](https://irc.linuxserver.io) - on freenode at `#linuxserver.io`. Our primary support channel is Discord.
+* [Blog](https://blog.linuxserver.io) - all the things you can do with our containers including How-To guides, opinions and much more!
+* [Podcast](https://anchor.fm/linuxserverio) - on hiatus. Coming back soon (late 2018).
 
-[CouchPotato](https://couchpota.to) is an automatic NZB and torrent downloader. You can keep a "movies I want" list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.
+# PSA: Changes are happening
 
-[![couchpotato](https://couchpota.to/media/images/full.png)][appurl]
+From August 2018 onwards, Linuxserver are in the midst of switching to a new CI platform which will enable us to build and release multiple architectures under a single repo. To this end, existing images for `arm64` and `armhf` builds are being deprecated. They are replaced by a manifest file in each container which automatically pulls the correct image for your architecture. You'll also be able to pull based on a specific architecture tag.
+
+TLDR: Multi-arch support is changing from multiple repos to one repo per container image.
+
+# [linuxserver/couchpotato](https://github.com/linuxserver/docker-couchpotato)
+[![](https://img.shields.io/discord/354974912613449730.svg?logo=discord&label=LSIO%20Discord&style=flat-square)](https://discord.gg/YWrKVTn)
+[![](https://images.microbadger.com/badges/version/linuxserver/couchpotato.svg)](https://microbadger.com/images/linuxserver/couchpotato "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/linuxserver/couchpotato.svg)](https://microbadger.com/images/linuxserver/couchpotato "Get your own version badge on microbadger.com")
+![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/couchpotato.svg)
+![Docker Stars](https://img.shields.io/docker/stars/linuxserver/couchpotato.svg)
+
+[Couchpotato](https://couchpota.to/) is an automatic NZB and torrent downloader. You can keep a `movies I want` list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.
+
+[![couchpotato](https://couchpota.to/media/images/full.png)](https://couchpota.to/)
+
+## Supported Architectures
+
+Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`. We utilise the docker manifest for multi-platform awareness. More information is available from docker [here](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list). 
+
+The architectures supported by this image are:
+
+| Architecture | Tag |
+| :----: | --- |
+| x86-64 | amd64-latest |
+| arm64 | arm64v8-latest |
+| armhf | arm32v6-latest |
 
 ## Usage
 
+Here are some example snippets to help you get started creating a container.
+
+### docker
+
 ```
 docker create \
-	--name=couchpotato \
-	-v <path to data>:/config \
-	-v <path to data>:/downloads \
-	-v <path to data>:/movies \
-	-e PGID=<gid> -e PUID=<uid>  \
-	-e TZ=<timezone> \
-	-e UMASK_SET=<022> \
-	-p 5050:5050 \
-	linuxserver/couchpotato
+  --name=couchpotato \
+  -e PUID=1001 \
+  -e PGID=1001 \
+  -e TZ=Europe/London \
+  -e UMASK_SET=022 \
+  -p 5050:5050 \
+  -v </path/to/appdata/config>:/config \
+  -v </path/to/downloads>:/downloads \
+  -v </path/to/movies>:/movies \
+  --restart unless-stopped \
+  linuxserver/couchpotato
+```
+
+
+### docker-compose
+
+Compatible with docker-compose v2 schemas.
+
+```
+---
+version: "2"
+services:
+  couchpotato:
+    image: linuxserver/couchpotato
+    container_name: couchpotato
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/London
+      - UMASK_SET=022
+    volumes:
+      - </path/to/appdata/config>:/config
+      - </path/to/downloads>:/downloads
+      - </path/to/movies>:/movies
+    ports:
+      - 5050:5050
+    mem_limit: 4096m
+    restart: unless-stopped
 ```
 
 ## Parameters
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
-For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
-So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
-http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
+Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively. For example, `-p 8080:80` would expose port `80` from inside the container to be accessible from the host's IP on port `8080` outside the container.
 
+| Parameter | Function |
+| :----: | --- |
+| `-p 5050` | http gui |
+| `-e PUID=1001` | for UserID - see below for explanation |
+| `-e PGID=1001` | for GroupID - see below for explanation |
+| `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London |
+| `-e UMASK_SET=022` | for umask setting of couchpotato, optional , default if left unset is 022 |
+| `-v /config` | Couchpotato Application Data. |
+| `-v /downloads` | Downloads Folder. |
+| `-v /movies` | Movie Share. |
 
-* `-p 5050` - the port(s)
-* `-v /config` - Couchpotato Application Data
-* `-v /downloads` - Downloads Folder
-* `-v /movies` - Movie Share
-* `-e PGID` for for GroupID - see below for explanation
-* `-e PUID` for for UserID - see below for explanation
-* `-e UMASK_SET` for umask setting of couchpotato, *optional* , default if left unset is 022.
-* `-e TZ` for timezone information, eg Europe/London
+## User / Group Identifiers
 
-It is based on alpine-linux with S6 overlay, for shell access whilst the container is running do `docker exec -it couchpotato /bin/bash`.
+When using volumes (`-v` flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
 
-### User / Group Identifiers
+Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
 
-Sometimes when using data volumes (`-v` flags) permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.
-
-In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as below:
+In this instance `PUID=1001` and `PGID=1001`, to find yours use `id user` as below:
 
 ```
-  $ id <dockeruser>
+  $ id username
     uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
 ```
 
-## Setting up the application
+&nbsp;
+## Application Setup
+
 Access the webui at `<your-ip>:5050`, for more information check out [CouchPotato](https://couchpota.to).
 
-## Info
 
-* To monitor the logs of the container in realtime `docker logs -f couchpotato`.
 
+## Support Info
+
+* Shell access whilst the container is running: `docker exec -it couchpotato /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f couchpotato`
 * container version number 
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' couchpotato`
-
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' couchpotato`
 * image version number
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/couchpotato`
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/couchpotato`
 
 ## Versions
 
-+ **16.08.18:** Rebase to alpine 3.8. 
-+ **06.12.17:** Rebase to alpine 3.7. 
-+ **20.07.17:** Internal git pull instead of at runtime, add UMASK_SET variable.
-+ **12.07.17:** Add inspect commands to README, move to jenkins build and push.
-+ **25.05.17:** Rebase to alpine 3.6. 
-+ **07.02.17:** Rebase to alpine 3.5. 
-+ **11.11.16:** Stop cp logging to docker log (they are accessible in the webui and the config folder)
-+ **30.09.16:** Fix umask.
-+ **09.09.16:** Add layer badges to README
-+ **27.08.16:** Add badges to README
-+ **08.08.16:** Rebase to alpine linux
-+ **12.11.15:** Misc Code Cleanup
-+ **02.10.15:** Change to python baseimage. 
-+ **28.07.15:** Updated to latest baseimage (for testing), and a fix to autoupdate.
+* **14.01.19:** - Multi-arch builds.
+* **16.08.18:** - Rebase to alpine 3.8.
+* **06.11.17:** - Rebase to alpine 3.7.
+* **20.07.17:** - Internal git pull instead of at runtime, add UMASK_SET variable.
+* **12.07.17:** - Add inspect commands to README, move to jenkins build and push
+* **25.05.17:** - Rebase to alpine 3.6
+* **07.02.17:** - Rebase to alpine 3.5.
+* **11.11.16:** - Stop cp logging to docker log (they are accessible in the webui and the config folder).
+* **30.09.16:** - Fix umask.
+* **09.09.16:** - Add layer badges to README.
+* **27.08.16:** - Add badges to README.
+* **08.08.16:** - Rebase to alpine linux.
+* **12.11.15:** - Misc Code Cleanup.
+* **02.10.15:** - Change to python baseimage.
+* **28.07.15:** - Updated to latest baseimage (for testing), and a fix to autoupdate.
