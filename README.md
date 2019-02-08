@@ -26,6 +26,8 @@ TLDR: Multi-arch support is changing from multiple repos to one repo per contain
 [![](https://images.microbadger.com/badges/image/linuxserver/couchpotato.svg)](https://microbadger.com/images/linuxserver/couchpotato "Get your own version badge on microbadger.com")
 ![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/couchpotato.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/linuxserver/couchpotato.svg)
+[![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Pipeline-Builders/docker-couchpotato/master)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-couchpotato/job/master/)
+[![](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/couchpotato/latest/badge.svg)](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/couchpotato/latest/index.html)
 
 [Couchpotato](https://couchpota.to/) is an automatic NZB and torrent downloader. You can keep a `movies I want` list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.
 
@@ -35,6 +37,8 @@ TLDR: Multi-arch support is changing from multiple repos to one repo per contain
 
 Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`. We utilise the docker manifest for multi-platform awareness. More information is available from docker [here](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list). 
 
+Simply pulling `linuxserver/couchpotato` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
+
 The architectures supported by this image are:
 
 | Architecture | Tag |
@@ -42,6 +46,7 @@ The architectures supported by this image are:
 | x86-64 | amd64-latest |
 | arm64 | arm64v8-latest |
 | armhf | arm32v6-latest |
+
 
 ## Usage
 
