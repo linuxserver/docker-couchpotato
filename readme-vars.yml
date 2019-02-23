@@ -40,6 +40,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "22.02.19:", desc: "Rebasing to alpine 3.9." }
   - { date: "14.01.19:", desc: "Multi-arch builds." }
   - { date: "16.08.18:", desc: "Rebase to alpine 3.8." }
   - { date: "06.11.17:", desc: "Rebase to alpine 3.7." }
