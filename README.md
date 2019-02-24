@@ -162,6 +162,7 @@ Below are the instructions for updating containers:
 
 ## Versions
 
+* **22.02.19:** - Rebasing to alpine 3.9.
 * **14.01.19:** - Multi-arch builds.
 * **16.08.18:** - Rebase to alpine 3.8.
 * **06.11.17:** - Rebase to alpine 3.7.
