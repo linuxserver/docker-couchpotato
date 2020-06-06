@@ -18,9 +18,9 @@ common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "</path/to/appdata/config>", desc: "Couchpotato Application Data." }
-  - { vol_path: "/downloads", vol_host_path: "</path/to/downloads>", desc: "Downloads Folder." }
-  - { vol_path: "/movies", vol_host_path: "</path/to/movies>", desc: "Movie Share." }
+  - { vol_path: "/config", vol_host_path: "/path/to/appdata/config", desc: "Couchpotato Application Data." }
+  - { vol_path: "/downloads", vol_host_path: "/path/to/downloads", desc: "Downloads Folder." }
+  - { vol_path: "/movies", vol_host_path: "/path/to/movies", desc: "Movie Share." }
 param_usage_include_ports: true
 param_ports:
   - { external_port: "5050", internal_port: "5050", port_desc: "http gui" }
@@ -40,6 +40,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "06.06.19:", desc: "Rebasing to alpine 3.12." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
