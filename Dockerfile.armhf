@@ -14,7 +14,9 @@ RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
 	curl \
-	python2 && \
+	python2 \
+	unrar \
+	unzip && \
  echo "**** install app ****" && \
  mkdir -p \
 	/app/couchpotato && \
