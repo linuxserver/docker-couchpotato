@@ -3,6 +3,13 @@ name: Feature request
 about: Suggest an idea for this project
 
 ---
+# DEPRECATION NOTICE
+
+This image is deprecated. We will not offer support for this image and it will not be updated.
+This project is no longer maintained upstream and we will no longer be updating this image.
+For an alternative try:
+https://github.com/linuxserver/docker-radarr
+
 [linuxserverurl]: https://linuxserver.io
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 

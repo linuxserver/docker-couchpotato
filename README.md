@@ -27,6 +27,13 @@ Find us at:
 * [GitHub](https://github.com/linuxserver) - view the source for all of our repositories.
 * [Open Collective](https://opencollective.com/linuxserver) - please consider helping us by either donating or contributing to our budget
 
+# DEPRECATION NOTICE
+
+This image is deprecated. We will not offer support for this image and it will not be updated.
+This project is no longer maintained upstream and we will no longer be updating this image.
+For an alternative try:
+https://github.com/linuxserver/docker-radarr
+
 # [linuxserver/couchpotato](https://github.com/linuxserver/docker-couchpotato)
 
 [![Scarf.io pulls](https://scarf.sh/installs-badge/linuxserver-ci/linuxserver%2Fcouchpotato?color=94398d&label-color=555555&logo-color=ffffff&style=for-the-badge&package-type=docker)](https://scarf.sh/gateway/linuxserver-ci/docker/linuxserver%2Fcouchpotato)
